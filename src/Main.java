@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
         Listem<Integer> l1 = new Listem<>();
+        Listem<Integer> l2 = new Listem<>();
         l1.add(5);
         l1.printDizi();
         l1.getCapacity();
@@ -32,5 +35,14 @@ public class Main {
         l1.size();
         l1.getCapacity();
         l1.printDizi();
+        System.out.println(l1.indexOf(1500));
+        System.out.println(l1.lastIndexOf(1500));
+        System.out.println(l2.isEmpty());
+        Object [] in = l1.toArray();
+        System.out.println(in[0]);
+        Listem t2 = new Listem<>();
+        t2 = l1.sublist(0,3);
+        System.out.println(t2.toString());
+
     }
 }

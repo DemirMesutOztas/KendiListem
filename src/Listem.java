@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Listem <T>{
 
     private Object [] dizi;
@@ -75,6 +77,80 @@ public class Listem <T>{
     public void size()
     {
         System.out.println("Dizideki eleman sayısı : " + this.index);
+    }
+
+   public int indexOf(T data) {
+       int i;
+       for (i = 0; i < this.dizi.length; i++) {
+           if (this.dizi[i] == data)
+           {
+               return i;
+           }
+
+
+
+       }
+       return -1;
+
+   }
+
+   public int lastIndexOf(T data)
+    {
+        int i;
+        for (i = this.dizi.length-1; i >= 0; i--) {
+            if (this.dizi[i] == data)
+            {
+                return i;
+            }
+
+
+
+        }
+        return -1;
+    }
+
+    public boolean isEmpty() {
+
+
+        for (int i = 0; i < this.dizi.length; i++)
+        {
+
+            if (this.dizi[i] != null)
+            {
+                return false;
+
+            }
+
+
+        }
+
+        return true;
+
+    }
+
+    Object [] toArray(){
+
+        Object [] arr = new Object[this.dizi.length];
+        for(int i=0;i<this.dizi.length;i++)
+        {
+            arr[i]= this.dizi[i];
+        }
+
+        return arr;
+    }
+
+    Listem<T> sublist(int start,int finish)
+    {
+        int x=(finish-start+1);
+        Listem<T> t = new Listem();
+        t.capacity=x;
+
+        for(int i=start;i<=finish;i++)
+        {
+            t.dizi[i] =  this.dizi[i];
+        }
+        return t;
+
     }
 
 
