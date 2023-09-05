@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 
 public class Listem <T>{
 
@@ -142,16 +142,101 @@ public class Listem <T>{
     Listem<T> sublist(int start,int finish)
     {
         int x=(finish-start+1);
-        Listem<T> t = new Listem();
-        t.capacity=x;
+        Listem<T> t = new Listem(x);
 
-        for(int i=start;i<=finish;i++)
+
+        for(int i=0;i<x;i++)
         {
-            t.dizi[i] =  this.dizi[i];
+            t.dizi[i] =  this.dizi[start++];
+            t.index++;
+            t.counter++;
         }
         return t;
 
     }
 
+   public void get(int index) {
+
+       System.out.println(this.dizi[index]);
+
+   }
+
+    public void remove(int index)
+    {
+        Object [] temp = new Object[this.capacity-1];
+        int count=0;
+        for(int i=0;i<this.dizi.length-1;i++)
+        {
+            if(i==index)
+            {
+               i++;
+            }
+
+
+            temp[count++]=this.dizi[i];
+
+        }
+
+        this.dizi = temp;
+        this.index = this.index-1;
+        this.counter=this.counter-1;
+
+
+
+
+    }
+
+    public void set (int index, T data)
+    {
+        this.dizi[index]= data;
+    }
+
+    public String toString()
+    {
+        String temp;
+        temp="[ ";
+        for(int i=0; i<this.index;i++)
+        {
+           temp+=this.dizi[i];
+           if(i!=this.index-1)
+           {
+               temp+=", ";
+           }
+
+
+
+        }
+        temp+=" ]";
+
+        return temp;
+
+    }
+
+    boolean contains(T data) {
+
+        for (int i = 0; i < this.index; i++) {
+
+            if (this.dizi[i] == data)
+            {
+                return true;
+            }
+
+
+
+        }
+
+
+        return false;
+    }
+
+    void clear()
+    {
+        for(int i=0;i<this.index;i++)
+        {
+            this.dizi[i]=null;
+
+        }
+
+    }
 
 }
